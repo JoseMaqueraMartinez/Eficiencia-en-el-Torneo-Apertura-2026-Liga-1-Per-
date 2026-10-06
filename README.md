@@ -38,17 +38,16 @@
 | Fuente | [5DollarFootballAPI](https://5dollarfootballapi.com) — endpoint `/v1/leagues/{id}/fixtures` con `include=events,stats` |
 | Liga | Peru Liga 1 |
 | Periodo | Torneo Apertura 2026: del 30/01/2026 al 31/05/2026 (hora de Lima) |
-| Partidos | 153 (18 equipos × 17 partidos, una sola rueda) |
+| Partidos | 153 (18 equipos × 17 partidos)|
 
-El análisis parte de una tabla de partidos ya limpia y validada. El proceso de descarga y limpieza se hizo por separado y **no está incluido en este repositorio**.
 
 ---
 
-## 🧹 Limpieza y validación (resumen)
+## 🧹 Limpieza y validación
 
 Antes del análisis, los datos de la API se validaron partido por partido:
 
-- Se seleccionaron los partidos dentro de las fechas del Apertura y se verificó que fueran 18 equipos con 17 partidos cada uno (153 cruces únicos).
+- Se seleccionaron los partidos dentro de las fechas del Apertura y se verificó que fueran 18 equipos con 17 partidos cada uno.
 - Se excluyó un partido duplicado en el calendario de la API, con estado sin confirmar y un cruce que ya se había jugado.
 - 3 partidos tenían el bloque de estadísticas roto (0 ataques en ambos equipos y tiros al arco iguales a los goles). Se marcaron con la bandera `stats_validas = False` y quedaron fuera de las métricas de juego.
 - En los eventos se encontraron un gol registrado de más y tarjetas amarillas incompletas en algunos partidos. Los totales de goles, córners y tarjetas se tomaron de la tabla de partidos, que coincide con los resultados reales.
@@ -59,7 +58,7 @@ Antes del análisis, los datos de la API se validaron partido por partido:
 
 **Muestras**
 - **Puntos y goles**: los 153 partidos.
-- **Posesión, ataques y tiros**: los 150 partidos con estadísticas válidas. Las métricas se calculan **por partido**, para que los equipos con un partido excluido sean comparables.
+- **Posesión, ataques y tiros**: los 150 partidos con estadísticas válidas. Las métricas se calculan por partido, para que los equipos con un partido excluido sean comparables.
 
 **Métricas por equipo**
 
